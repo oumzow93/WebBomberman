@@ -33,7 +33,7 @@ public class Controleur extends HttpServlet {
     // TODO Auto-generated method stub
     String name = request.getParameter("nom");
     request.setAttribute("name", name);
-    this.getServletContext().getRequestDispatcher("/WEB-INF/page/home.jsp").forward(request, response);
+    this.getServletContext().getRequestDispatcher("/WEB-INF/pages/homepage.jsp").forward(request, response);
   }
 
   /**
