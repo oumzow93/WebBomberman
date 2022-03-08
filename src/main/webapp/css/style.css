@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.body {
+	background-image: url("./img/bomberman2.jpg");
+}
+
+.footer{
+	position: relative;
+	   position:fixed;
+       bottom: 0;
+       width:100%;
+
+}
+#contenu-footer{
+	background-color:black;
+	color:white;
+
+}
