@@ -9,11 +9,11 @@
  
 </head>
 <body>
-    <div class="container mb-3 mx-auto">
+    <div class="container">
 
 
         <div class="row">
-            <div class="col col-md-6 mx-auto shadow bg-white">
+            <div class="col col-md-6 mx-auto shadow bg-white"  style="margin: 0 auto;">
                <!-- <div class="mt-3 mb-3">
                     <img src="image/logo.png" alt="">
                 </div>-->
@@ -42,7 +42,7 @@
                                 <input type="checkbox" name="_remember_me"> Remember me
                             </label>
                         </div>
-                        <a href="#">Mot de passe oubliÃ© ?</a>
+                        <a href="#">Mot de passe oublier ?</a>
 
                     </div>
 

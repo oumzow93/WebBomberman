@@ -16,7 +16,7 @@
               <a class="nav-link active" href="#">Inscription</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/WebBomberman/Connexion">Se connecter</a>
+              <a class="nav-link active" href="Connexion">Se connecter</a>
             </li>
          
           </ul>
