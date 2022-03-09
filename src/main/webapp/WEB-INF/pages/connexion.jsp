@@ -1,38 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+    
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Connexion</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
-</head>
-<body>
-    <div class="container">
+    <head>
+        <meta charset="utf-8" />
+        <title>Test</title>
+       
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+   
+    
+   
+   
+  </head>
+  <body >
+     <%@ include file="../navigation/navbar.jsp" %>
+    
+    
+    <div class="container mb-3">
 
 
         <div class="row">
-            <div class="col col-md-6 mx-auto shadow bg-white"  style="margin: 0 auto;">
-               <!-- <div class="mt-3 mb-3">
-                    <img src="image/logo.png" alt="">
-                </div>-->
-                <h1 class="text-center mb-5">Please sign in</h1>
+            <div class="col col-md-4 mx-auto shadow" style="background-color:#e5e7e9; margin-top:60px">
+               <div class="mt-3 text-center">
+                    <img src="img/images.png" alt="" width="60">
+                 
+                </div>
+                <h4 class="text-center mb-5">Veuillez vous connecter</h4>
                 
 
                 <form method="post">
-   
+
                 
 
 
-                    <div class="form-group mb-3">
-                        <label for="Email">Email</label>
-                        <input type="email"  name="email" id="Email" class="form-control" required autofocus>
+                    <div class="form-group mb-3 bg-Secondary">
+                        
+                        <input type="email" value="" name="email" id="Email" class="form-control" required autofocus placeholder="Adress e-mail">
+                        
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="Password">Password</label>
-                        <input type="password" name="password" id="Password" class="form-control" required>
+                        
+                        <input type="password" value="" name="password" id="Password" class="form-control" required placeholder="Mot de passe">
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
 
@@ -42,16 +55,16 @@
                                 <input type="checkbox" name="_remember_me"> Remember me
                             </label>
                         </div>
-                        <a href="#">Mot de passe oublier ?</a>
+                        <a href="#">Mot de passe oublier?</a>
 
                     </div>
 
 
                     <div class="d-grid gap-2 mb-5">
-                        <button class="btn btn-lg btn-primary" type="submit">Se connecter</button>
+                        <button class="btn btn-lg btn-primary" type="submit">S'identifier</button>
                       </div>
 
-                      <p class="text-center text-muted mt-5 mb-3"> Pas de compte ? <a href="{{path('inscription')}}">Inscription</a></p>
+                      <p class="text-center text-muted mt-5 mb-3"> Pas de compte ? <a href="Inscription">Inscription</a></p>
 
                 </form>
             </div>
@@ -63,11 +76,10 @@
 
    
     </div>
-    </div>
+
     
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+   
 </html>

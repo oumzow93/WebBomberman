@@ -13,7 +13,7 @@
 
                 <!--{{ app.user.nom }}-->
             <li class="nav-item ">
-              <a class="nav-link active" href="#">Inscription</a>
+              <a class="nav-link active" href="Inscription">Inscription</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="Connexion">Se connecter</a>
