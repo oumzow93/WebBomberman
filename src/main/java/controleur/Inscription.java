@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.User;
+
 import form.Utilisateur;
 
 /**
@@ -45,8 +45,8 @@ public class Inscription extends HttpServlet {
 		uti.setNom(request.getParameter("nom"));
 		uti.setPrenom(request.getParameter("prenom"));
 		
-		User user= new User();
-		user.ajouterUtilisateur(uti);
+		/*User user= new User();
+		user.ajouterUtilisateur(uti);*/
 		
 	}
 
