@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import db.DaoFactory;
+import db.UtilisateurDao;
 import form.Utilisateur;
 
 /**
@@ -16,6 +17,7 @@ import form.Utilisateur;
 @WebServlet("/Inscription")
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	 private UtilisateurDao utilisateurDao;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -23,6 +25,11 @@ public class Inscription extends HttpServlet {
     public Inscription() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    
+    public void init() throws ServletException {
+        DaoFactory daoFactory = DaoFactory.getInstance();
+        this.utilisateurDao = daoFactory.getUtilisateurDao();
     }
 
 	/**
@@ -45,8 +52,7 @@ public class Inscription extends HttpServlet {
 		uti.setNom(request.getParameter("nom"));
 		uti.setPrenom(request.getParameter("prenom"));
 		
-		/*User user= new User();
-		user.ajouterUtilisateur(uti);*/
+		this.utilisateurDao.ajouter(uti);
 		
 	}
 
