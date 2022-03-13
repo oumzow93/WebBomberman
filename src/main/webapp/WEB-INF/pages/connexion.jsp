@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     
 <!DOCTYPE html>
@@ -18,6 +19,14 @@
   </head>
   <body >
      <%@ include file="../navigation/navbar.jsp" %>
+     
+    <div class="container text-center col col-md-3" >
+        <c:if test="${ !empty erreur }">
+            <div class="alert alert-danger" role="alert">
+                <c:out value="${erreur}" />
+             </div>
+          </c:if>        
+     </div>
     
     
     <div class="container mb-3">
@@ -39,7 +48,7 @@
 
                     <div class="form-group mb-3 bg-Secondary">
                         
-                        <input type="email" value="" name="email" id="Email" class="form-control" required autofocus placeholder="Adress e-mail">
+                        <input type="text" value="" name="pseudo" id="Email" class="form-control" required autofocus placeholder="Pseudo">
                         
                     </div>
 

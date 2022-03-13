@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import MesExceptions.DaoException;
 import db.DaoFactory;
 import db.UtilisateurDao;
 import form.Utilisateur;
@@ -45,15 +46,25 @@ public class Inscription extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-		Utilisateur uti = new Utilisateur();
-		uti.setPseudo(request.getParameter("nom_utilisateur"));
-		uti.setPassword(request.getParameter("password"));
-		uti.setNom(request.getParameter("nom"));
-		uti.setPrenom(request.getParameter("prenom"));
+
 		
-		this.utilisateurDao.ajouter(uti);
-		
+		try {
+			//doGet(request, response);
+			Utilisateur uti = new Utilisateur();
+			uti.setPseudo(request.getParameter("nom_utilisateur"));
+			uti.setPassword(request.getParameter("password"));
+			uti.setConfirmPassword(request.getParameter("confirmation"));
+			uti.setNom(request.getParameter("nom"));
+			uti.setPrenom(request.getParameter("prenom"));
+			this.utilisateurDao.ajouter(uti);
+			request.setAttribute("succes", "Votre compte à été créer avec succès");
+			
+		}catch (DaoException e) {
+			System.out.println(e.getMessage());
+			 request.setAttribute("erreur", e.getMessage());
+			
+		}
+		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(request, response);
 	}
 
 }

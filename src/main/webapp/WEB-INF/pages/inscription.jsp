@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,22 @@
 </head>
 <body >
      <%@ include file="../navigation/navbar.jsp" %>
+ 
+      
+
+     <div class="container text-center col col-md-3" >
+	    <c:if test="${ !empty erreur }">
+	        <div class="alert alert-danger" role="alert">
+	            <c:out value="${erreur}" />
+	         </div>
+	      </c:if>
+	     <c:if test="${ !empty succes }">
+	        <div class="alert alert-success" role="alert">
+	            <c:out value="${succes}" />
+	         </div>
+	      </c:if>
+        
+     </div>
     <div class="row">
         <div class="col col-md-3 mx-auto shadow " style="background-color:#e5e7e9; margin-top:60px;">
             <div class="mt-3 mb-3 text-center">
@@ -17,7 +34,7 @@
                  
             </div>
             <h4 class="text-center mb-5">Créer un nouveau compte</h4>
-            <form method="post">
+            <form method="post" action="Inscription" >
                 <div class="form-group mb-3 bg-Secondary">
                         
                         <input type="text" value="" name="nom_utilisateur" id="utilisateur" class="form-control" required autofocus placeholder="Nom d'utilisateur">
@@ -43,7 +60,7 @@
                     </div>
                     <div class="form-group mb-3 bg-Secondary">
                         
-                        <input type="text" value="" name="confirmation" id="confirmation" class="form-control" required autofocus placeholder="Confirmer le mot de passe">
+                        <input type="password" value="" name="confirmation" id="confirmation" class="form-control" required autofocus placeholder="Confirmer le mot de passe">
                         
                     </div>
                     <div class="d-grid gap-2 mb-5">

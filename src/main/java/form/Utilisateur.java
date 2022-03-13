@@ -5,6 +5,7 @@ public class Utilisateur {
 	private String prenom;
 	private String pseudo;
 	private String password;
+	private String confirmPassword;
 	public String getNom() {
 		return nom;
 	}
@@ -28,6 +29,12 @@ public class Utilisateur {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 }
