@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import MesExceptions.DaoException;
 import db.DaoFactory;
@@ -38,6 +39,9 @@ public class Inscription extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+
 		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(request, response);
 	}
 
@@ -47,6 +51,21 @@ public class Inscription extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		String logUser = (request.getParameter( "nom_utilisateur" ) != null) ? request.getParameter( "nom_utilisateur" ) : "";
+		String nom = (request.getParameter( "nom" ) != null) ? request.getParameter( "nom" ) : "";
+		String prenom = (request.getParameter( "prenom" ) != null) ? request.getParameter( "prenom" ) : "";
+		String email = (request.getParameter( "email" ) != null) ? request.getParameter( "email" ) : "";
+		
+		
+		request.setAttribute("nom_utilisateur", logUser);
+		request.setAttribute("nom", nom);
+		request.setAttribute("prenom", prenom);
+		request.setAttribute("email", email);
+		
+		
+		
+
+		//this.getServletContext().getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(request, response);
 		
 		try {
 			//doGet(request, response);
@@ -56,6 +75,7 @@ public class Inscription extends HttpServlet {
 			uti.setConfirmPassword(request.getParameter("confirmation"));
 			uti.setNom(request.getParameter("nom"));
 			uti.setPrenom(request.getParameter("prenom"));
+			uti.setEmail(request.getParameter("email"));
 			this.utilisateurDao.ajouter(uti);
 			request.setAttribute("succes", "Votre compte à été créer avec succès");
 			

@@ -23,11 +23,14 @@
            
             
             <c:if test="${!empty sessionScope.utilisateur }">
+            	 <li class="nav-item">
+                  <a class="nav-link active" href="Utilisateurs">Utilisateurs</a>
+                </li>
                 <li class="nav-item ">
-                  <a class="nav-link active" href="#">Histique</a>
+                  <a class="nav-link active" href="#">Historique</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Mon compte</a>
+                  <a class="nav-link active" href="MonCompte">Mon compte</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" href="Deconnexion">Deconnexion</a>

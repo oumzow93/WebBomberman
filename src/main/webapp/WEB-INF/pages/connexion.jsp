@@ -48,7 +48,7 @@
 
                     <div class="form-group mb-3 bg-Secondary">
                         
-                        <input type="text" value="" name="pseudo" id="Email" class="form-control" required autofocus placeholder="Pseudo">
+                        <input type="text" value="${pseudo}" name="pseudo" id="Email" class="form-control" required autofocus placeholder="Pseudo">
                         
                     </div>
 

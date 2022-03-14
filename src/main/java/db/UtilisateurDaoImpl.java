@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mysql.jdbc.Connection;
@@ -20,19 +21,19 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	private DaoFactory daoFactory;
 
-	UtilisateurDaoImpl(DaoFactory daoFactory) {
+	public UtilisateurDaoImpl(DaoFactory daoFactory) {
 		this.daoFactory = daoFactory;
 	}
 
 	@Override
 	public void ajouter(Utilisateur utilisateur) throws DaoException{
 
-		if(this.utlisateurExiste(utilisateur.getPseudo())) {// VERIFIER SI L'ITILISATEUR EXUSTE DANS LA BASE
+		if(this.utlisateurExiste(utilisateur.getPseudo())) {// VERIFIER SI L'ITILISATEUR EXISTE DANS LA BASE
 			throw new DaoException("Ce nom d'utilisateur existe dejà! ");
 
 
 		}
-		else if(!this.verifPassword(utilisateur.getPassword(),utilisateur.getConfirmPassword())) {//  VEROFEIR SI LES 2 PASSWORD SON LES MEMES
+		else if(!this.verifPassword(utilisateur.getPassword(),utilisateur.getConfirmPassword())) {//  VERIFIER SI LES 2 PASSWORD SON LES MEMES
 			throw new DaoException("Les deux mot de passes doivent être identiques");
 			
 		}
@@ -43,11 +44,12 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 			try {
 				connexion = (Connection) daoFactory.getConnection();
-				preparedStatement = (PreparedStatement) connexion.prepareStatement("INSERT INTO 	UTILISATEURS(pseud, password, nom, prenom) VALUES(?, ?,?,?);");
+				preparedStatement = (PreparedStatement) connexion.prepareStatement("INSERT INTO UTILISATEURS(pseud, password, nom, prenom, email) VALUES(?, ?,?,?,?);");
 				preparedStatement.setString(1, utilisateur.getPseudo());
 				preparedStatement.setString(2, utilisateur.getPassword());
 				preparedStatement.setString(3, utilisateur.getNom());
 				preparedStatement.setString(4, utilisateur.getPrenom());
+				preparedStatement.setString(5, utilisateur.getEmail());
 
 				preparedStatement.executeUpdate();
 
@@ -63,8 +65,26 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	@Override
 	public List<Utilisateur> lister() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Utilisateur> utilisateurs= new ArrayList();
+		try {
+			Connection connexion = (Connection) daoFactory.getConnection();
+			Statement statement = connexion.createStatement();
+			ResultSet result = statement.executeQuery("SELECT pseud, password, nom, prenom, email FROM UTILISATEURS");
+			while(result.next()) {
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setPseudo(result.getString(1));
+				utilisateur.setNom(result.getString(3));
+				utilisateur.setPrenom(result.getString(4));
+				utilisateur.setEmail(result.getString(5));
+				utilisateurs.add(utilisateur);
+				System.out.println(result.getString(1) + " " + result.getString(2) + " " + result.getString(3) + " " + result.getString(4) + " " + result.getString(5));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return utilisateurs;
 	}
 
 	//===========================METHODE PERMETTEN DE SAVOIR SI UN TULISATEUR EXISTE DEJA
@@ -124,6 +144,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		
 	}
 	
+	
 	//==============================================HASSAGE DU PASSWORD AVAN DE L'ENREGISTRE DANS BASSE
     public String Cripte(String password) {
     	
@@ -164,6 +185,36 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         System.out.println(generatedPassword);
         return generatedPassword;*/
     }
+
+	@Override
+	public Utilisateur InformationUser(String pseudo) {
+		try {
+			Connection connexion = (Connection) daoFactory.getConnection();
+			Statement statement = connexion.createStatement();
+			ResultSet result = statement.executeQuery("SELECT pseud, password, nom, prenom, email FROM UTILISATEURS");
+			while(result.next()) {
+				if(pseudo.equals(result.getString("pseud"))) {
+					Utilisateur utilisateur = new Utilisateur();
+					utilisateur.setPseudo(result.getString(1));
+					utilisateur.setNom(result.getString(3));
+					utilisateur.setPrenom(result.getString(4));
+					utilisateur.setEmail(result.getString(5));
+					
+					return utilisateur;
+					
+				}
+				
+				
+				//System.out.println(result.getString(1) + " " + result.getString(2) + " " + result.getString(3) + " " + result.getString(4) + " " + result.getString(5));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		
+		return null;
+	}
 
 
 }

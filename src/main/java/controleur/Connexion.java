@@ -18,20 +18,20 @@ import form.Utilisateur;
 @WebServlet("/Connexion")
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 private UtilisateurDao utilisateurDao;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Connexion() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-    public void init() throws ServletException {
-        DaoFactory daoFactory = DaoFactory.getInstance();
-        this.utilisateurDao = daoFactory.getUtilisateurDao();
-    }
+	private UtilisateurDao utilisateurDao;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Connexion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void init() throws ServletException {
+		DaoFactory daoFactory = DaoFactory.getInstance();
+		this.utilisateurDao = daoFactory.getUtilisateurDao();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,15 +39,14 @@ public class Connexion extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(request, response);
+
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-
-
 		
 		if(this.utilisateurDao.authentification(request.getParameter("pseudo"), request.getParameter("password"))) {
 			response.sendRedirect("home");
@@ -55,13 +54,13 @@ public class Connexion extends HttpServlet {
 			session.setAttribute("utilisateur", request.getParameter("pseudo"));
 			System.out.println(session.getAttribute("utilisateur"));
 			//this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(request, response);
-		
-			
+
+
 		}else {
 			request.setAttribute("erreur", "Identifient incorrecte!");
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(request, response);
 		}
-		
+
 	}
 
 }

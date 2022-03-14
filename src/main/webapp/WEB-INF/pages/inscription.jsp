@@ -37,20 +37,20 @@
             <form method="post" action="Inscription" >
                 <div class="form-group mb-3 bg-Secondary">
                         
-                        <input type="text" value="" name="nom_utilisateur" id="utilisateur" class="form-control" required autofocus placeholder="Nom d'utilisateur">
+                        <input type="text" value="${nom_utilisateur}" name="nom_utilisateur" id="utilisateur" class="form-control" required autofocus placeholder="Nom d'utilisateur">
                         
                  </div>
                  <div class="form-group mb-3">
                         
-                        <input type="text" value="" name="nom" id="nom" class="form-control" required placeholder="Nom">
+                        <input type="text" value="${nom}" name="nom" id="nom" class="form-control" required placeholder="Nom">
                   </div>
                    <div class="form-group mb-3">
                         
-                        <input type="text" value="" name="prenom" id="nom" class="form-control" required placeholder="Prenom">
+                        <input type="text" value="${prenom}" name="prenom" id="nom" class="form-control" required placeholder="Prenom">
                   </div>
                    <div class="form-group mb-3 bg-Secondary">
                         
-                        <input type="email" value="" name="email" id="Email" class="form-control" required autofocus placeholder="Adress e-mail">
+                        <input type="email" value="${email}" name="email" id="Email" class="form-control" required autofocus placeholder="Adress e-mail">
                         
                     </div>
 
