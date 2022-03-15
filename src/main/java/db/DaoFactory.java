@@ -23,7 +23,8 @@ public class DaoFactory {
         }
 
         DaoFactory instance = new DaoFactory(
-        		"jdbc:mysql://localhost:3306/WebBomberman", "owele", "iuprt2014");
+        		//"jdbc:mysql://localhost:3306/WebBomberman", "owele", "iuprt2014");
+        		 "jdbc:mysql://localhost:3306/WebBomberman", "root", "");
         return instance;
     }
 

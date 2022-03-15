@@ -11,5 +11,7 @@ public interface UtilisateurDao {
    public List<Utilisateur> lister();
    public Utilisateur InformationUser(String pseudo);
    public boolean authentification(String pseudo, String password);
+   public void modifierUtilisateur(String pseudo);
+   public void supprimerUtilisateur(String pseudo);
 
 }

@@ -216,5 +216,38 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		return null;
 	}
 
+	@Override
+	public void modifierUtilisateur(String pseudo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void supprimerUtilisateur(String pseudo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//@Override
+	/*public void supprimerUtilisateur(String pseudo) {
+		Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+		try {
+			connexion = (Connection) daoFactory.getConnection();
+			preparedStatement = (PreparedStatement) connexion.createStatement();
+					(SQL_DELETE);
+			preparedStatement.setString(1, pseudo);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+		
+	}*/
+
 
 }
