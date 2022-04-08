@@ -1,4 +1,4 @@
-package form;
+package bean;
 
 public class Utilisateur {
 	private String nom;
@@ -6,6 +6,7 @@ public class Utilisateur {
 	private String pseudo;
 	private String password;
 	private String confirmPassword;
+	private String email;
 	public String getNom() {
 		return nom;
 	}
@@ -35,6 +36,12 @@ public class Utilisateur {
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

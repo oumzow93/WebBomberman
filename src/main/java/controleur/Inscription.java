@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import MesExceptions.DaoException;
 import db.DaoFactory;
 import db.UtilisateurDao;
-import form.Utilisateur;
+import bean.Utilisateur;
 
 /**
  * Servlet implementation class Inscription
@@ -56,15 +57,21 @@ public class Inscription extends HttpServlet {
 			uti.setConfirmPassword(request.getParameter("confirmation"));
 			uti.setNom(request.getParameter("nom"));
 			uti.setPrenom(request.getParameter("prenom"));
+			uti.setEmail(request.getParameter("email"));
 			this.utilisateurDao.ajouter(uti);
-			request.setAttribute("succes", "Votre compte à été créer avec succès");
+			
+			response.sendRedirect("Connexion");
+			HttpSession session = request.getSession();
+			session.setAttribute("SuccesCreation", "Votre compte à été créer avec succès");
 			
 		}catch (DaoException e) {
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
 			 request.setAttribute("erreur", e.getMessage());
-			
+			 this.getServletContext().getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(request, response);
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(request, response);
+		
 	}
+	
+
 
 }

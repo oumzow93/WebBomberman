@@ -17,9 +17,10 @@ public class Deconnexion extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("home");
+		
 		HttpSession session = request.getSession();
 		session.invalidate();
+		response.sendRedirect("home");
 	
 	}
 

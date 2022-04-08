@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import db.DaoFactory;
 import db.UtilisateurDao;
-import form.Utilisateur;
+
 
 /**
  * Servlet implementation class Connexion
@@ -49,16 +49,21 @@ public class Connexion extends HttpServlet {
 
 
 		
-		if(this.utilisateurDao.authentification(request.getParameter("pseudo"), request.getParameter("password"))) {
+		if(this.utilisateurDao.authentification(request.getParameter("pseudo"), request.getParameter("password"))&& !this.utilisateurDao.estbloquer(request.getParameter("pseudo"))) {
 			response.sendRedirect("home");
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", request.getParameter("pseudo"));
-			System.out.println(session.getAttribute("utilisateur"));
-			//this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(request, response);
-		
+			if(this.utilisateurDao.EstAdmin(request.getParameter("pseudo"))) {
+				session.setAttribute("Admin", "Admin");
+			}
+				
 			
-		}else {
-			request.setAttribute("erreur", "Identifient incorrecte!");
+		}else if(this.utilisateurDao.estbloquer(request.getParameter("pseudo"))) {
+			request.setAttribute("erreur", "Compte bloqué!");
+			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(request, response);
+		}
+		else {
+			request.setAttribute("erreur", "Identifiant incorrect!");
 			this.getServletContext().getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(request, response);
 		}
 		

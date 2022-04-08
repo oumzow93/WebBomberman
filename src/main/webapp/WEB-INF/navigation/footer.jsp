@@ -4,25 +4,7 @@
     
     <div class=" text-center shadow-sm  mt-5  "id = "contenu-footer"> 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 mt-5">
-            <p class="border-bottom"> À PROPOS DE NOUS</p>
-
-        </div>
-
-        <div class="col-md-4 mt-5">
-            <p class="border-bottom"> NFORMATIONS LÉGALES</p>
-
-        </div>
-
-        <div class="col-md-4 mt-5">
-            <p class="border-bottom"> DES QUESTIONS ?</p>
-
-        </div>
-
-        
-
-    </div>
+   
 
     <div class="mt-3" style="margin-left: auto;">
         <a href="https://fr-fr.facebook.com/" style="margin-left: 20px;">
@@ -51,7 +33,7 @@
 
     </div>        
 
-    <p class="mt-3" style="color: black;">&copy;  <?php echo date("Y"); ?> Copyright&middot; <a href="#"> About</a></p>
+    <p class="mt-3" style="color: black;">&copy;  <?php echo date("Y"); ?> Copyright&middot; <a href="Contact">À PROPOS DE NOUS</a></p>
 </div>
 
 </div>

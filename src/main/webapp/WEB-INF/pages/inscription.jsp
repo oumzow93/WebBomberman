@@ -20,11 +20,7 @@
 	            <c:out value="${erreur}" />
 	         </div>
 	      </c:if>
-	     <c:if test="${ !empty succes }">
-	        <div class="alert alert-success" role="alert">
-	            <c:out value="${succes}" />
-	         </div>
-	      </c:if>
+
         
      </div>
     <div class="row">

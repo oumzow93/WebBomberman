@@ -23,11 +23,17 @@
            
             
             <c:if test="${!empty sessionScope.utilisateur }">
-                <li class="nav-item ">
-                  <a class="nav-link active" href="#">Histique</a>
-                </li>
+                <c:if test="${!empty sessionScope.Admin}">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Membres">Utilisateurs</a>
+                    </li>
+                </c:if>
+
+             <!--   <li class="nav-item ">
+                  <a class="nav-link active" href="#">Historique</a>
+                </li> -->
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Mon compte</a>
+                  <a class="nav-link active" href="Moncompt">Mon compte</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" href="Deconnexion">Deconnexion</a>

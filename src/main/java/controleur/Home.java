@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @WebServlet("/home")
-public class Controleur extends HttpServlet {
+public class Home extends HttpServlet {
 
 
 
@@ -21,7 +21,7 @@ public class Controleur extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controleur() {
+    public Home() {
         super();
         // TODO Auto-generated constructor stub
     }

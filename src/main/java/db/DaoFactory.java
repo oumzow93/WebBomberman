@@ -37,4 +37,18 @@ public class DaoFactory {
     public UtilisateurDao getUtilisateurDao() {
         return new UtilisateurDaoImpl(this);
     }
+    public PartieDAO getPartieDAO() {
+    	return new PartieDaoImpl(this);
+    }
+    public  HistoriqueDAO getHistoriqueDao() {
+    	return new HistoriqueDaoImpl(this);
+    }
+    
+    
+ 
 }
+
+
+
+
+
